@@ -1,3 +1,43 @@
 body {
     background-color: black;
 }
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.photo-card {
+    margin: 10px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    /* width: calc((100% - 80px)/3);  */
+    border-radius: 8px;
+    border: 1px solid white;
+    /* background-color: #fff; */
+    
+}
+
+img {
+    width: 300px;
+    height: 200px;
+        /* width: 100%;
+    height: 270px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px; */
+}
+
+.stats {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.stats-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px ;
+}

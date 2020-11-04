@@ -1,25 +1,51 @@
 import cardTemplate from "./templates/cardTemplate.hbs";
+import * as basicLightbox from 'basiclightbox';
+import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
-const apiKey = '18970346-3d451e610c9741be437dec23e';
-
+const API_KEY = '18970346-3d451e610c9741be437dec23e';
 const cardGallery = document.querySelector('.gallery')
-
-
-let page = 1;
+const loadBtn = document.querySelector('.loadBtn')
 const searchRes = document.querySelector('input');
 const searchForm = document.querySelector('form');
 
-searchForm.addEventListener('submit', e => {
-    e.preventDefault();
+let page = 1;
 
-    fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchRes.value}&page=${page}&per_page=12&key=${apiKey}
+const renderPic = function () {
+
+
+    fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchRes.value}&page=${page}&per_page=12&key=${API_KEY}
 `)
         .then(data => data.json())
         .then(({ hits }) => {
             const card = cardTemplate(hits);
             cardGallery.insertAdjacentHTML('beforeend', card);
-
         })
+    page += 1
+}
 
-
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    cardGallery.innerHTML = "";
+    page = 1;
+    renderPic();
 })
+
+
+cardGallery.addEventListener('click', (e) => {
+    e.path.forEach(el => {
+        if (el.className === 'gallery-item') {
+            const instance = basicLightbox.create(`
+   <img src="${el.dataset.path}">
+`)
+            instance.show()
+        }
+
+    })
+})
+loadBtn.addEventListener('click', renderPic)
+
+cardGallery.scrollTo({
+    top: 100,
+    left: 100,
+    behavior: 'smooth'
+});
