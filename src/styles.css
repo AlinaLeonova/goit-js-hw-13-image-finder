@@ -13,7 +13,7 @@ ul {
 
 input {
     display: block;
-    height: 35px;
+    height: 20px;
     width: 200px;
     font-size: 25px;
     font-weight: 500;
@@ -39,10 +39,11 @@ input {
 .photo-card {
 display: flex;
 flex-direction: column;
-width: 500px;
+width: 400px;
 margin-bottom: 25px;
 border-radius: 10px;
-border: 1px solid #4f62bf;
+border: 2px solid #4f62bf;
+ overflow: hidden;
 }
 
 .photo-card:not(:nth-child(3n)) {
@@ -53,27 +54,31 @@ img {
    
     width: 100%;
     height: 270px;
-        border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+        /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+   
 } 
 
 .stats {
     background-color: #4f62bf29;
     color: #4f62bf;
     display: flex;
-    justify-content: space-around;
-    align-items: baseline;
-    /* border: solid 1px #4f62bf;
-    border-radius: 10px; */
+    justify-content: center;
+   
 }
 
 .stats-item {
     display: flex;
     align-items: center;
-    margin-right: 20px ;
+    font-size: 17px;
+    
 }
 
-.material-icon {
+.stats-item:not(:last-child) {
+margin-right: 20px ;
+}
+
+.material-icons {
     margin-right: 5px;
 }
 
