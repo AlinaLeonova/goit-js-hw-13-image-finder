@@ -12,7 +12,7 @@ let page = 1;
 
 const renderPic = function () {
 
-
+    loadBtn.classList.add('is-hiiden')
     fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchRes.value}&page=${page}&per_page=12&key=${API_KEY}
 `)
         .then(data => data.json())
@@ -28,6 +28,7 @@ searchForm.addEventListener('submit', (e) => {
     cardGallery.innerHTML = "";
     page = 1;
     renderPic();
+    loadBtn.classList.remove('is-hidden')
 })
 
 
@@ -41,6 +42,7 @@ cardGallery.addEventListener('click', (e) => {
         }
 
     })
+
 })
 loadBtn.addEventListener('click', renderPic)
 
@@ -49,3 +51,5 @@ cardGallery.scrollTo({
     left: 100,
     behavior: 'smooth'
 });
+
+
