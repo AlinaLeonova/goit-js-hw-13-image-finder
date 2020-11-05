@@ -34,6 +34,7 @@ input {
    flex-wrap: wrap;
    justify-content: center;
    margin-bottom: 10px;
+   padding-bottom: 50px;
 }
 
 .photo-card {
@@ -91,9 +92,11 @@ margin-right: 20px ;
     color: #4f62bf;
     border: solid 1px #4f62bf;
    border-radius: 5px;
+   position: fixed;
+   bottom:10px;
+left: 45%;
 }
 
 .is-hidden {
-    opacity: 0;
-    visibility: 0;
+    display: none;
 }

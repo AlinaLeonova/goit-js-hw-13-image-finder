@@ -10,16 +10,23 @@ const searchForm = document.querySelector('form');
 
 let page = 1;
 
-const renderPic = function () {
+const renderPic = async function () {
 
-    loadBtn.classList.add('is-hiiden')
-    fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchRes.value}&page=${page}&per_page=12&key=${API_KEY}
+
+    await fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchRes.value}&page=${page}&per_page=12&key=${API_KEY}
 `)
         .then(data => data.json())
         .then(({ hits }) => {
             const card = cardTemplate(hits);
             cardGallery.insertAdjacentHTML('beforeend', card);
+
         })
+    page > 1 ? window.scrollTo({
+        top: window.pageYOffset + window.innerHeight + 1000,
+        behavior: 'smooth'
+    }) : '';
+
+
     page += 1
 }
 
@@ -42,14 +49,14 @@ cardGallery.addEventListener('click', (e) => {
         }
 
     })
-
 })
+
+
+
 loadBtn.addEventListener('click', renderPic)
 
-cardGallery.scrollTo({
-    top: 100,
-    left: 100,
-    behavior: 'smooth'
-});
+window.addEventListener('scroll', () => {
+    (document.documentElement.clientHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight - 200) ? loadBtn.classList.remove('is-hidden') : loadBtn.classList.add('is-hidden');
 
+})
 
