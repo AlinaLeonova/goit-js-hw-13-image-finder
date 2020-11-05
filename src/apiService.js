@@ -56,7 +56,9 @@ cardGallery.addEventListener('click', (e) => {
 loadBtn.addEventListener('click', renderPic)
 
 window.addEventListener('scroll', () => {
-    (document.documentElement.clientHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight - 200) ? loadBtn.classList.remove('is-hidden') : loadBtn.classList.add('is-hidden');
+    (document.documentElement.clientHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight - 100) ?
+        loadBtn.classList.remove('is-hidden')
+        : loadBtn.classList.add('is-hidden');
 
 })
 
